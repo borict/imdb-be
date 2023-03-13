@@ -3,6 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\MovieController;
 
 /*
 |--------------------------------------------------------------------------
@@ -31,5 +32,8 @@ Route::group([
         Route::post('register', 'register')->name('register')->withoutMiddleware(["auth.jwt"]);
         Route::post('logout', 'logout');
         Route::post('refresh', 'refresh');
+    });
+    Route::controller(MovieController::class)->group(function () {
+        Route::get('movies', 'index')->name('all-movies');
     });
 });
