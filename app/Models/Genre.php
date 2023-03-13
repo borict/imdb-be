@@ -11,12 +11,6 @@ class Genre extends Model
     public $timestamps = false;
 
     protected $fillable = [
-        'genres',
-        'movie_id'
+        'genres'
     ];
-
-    public function movie()
-    {
-        return $this->belongsTo(Movie::class);
-    }
 }

@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\Genre;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
@@ -20,6 +21,10 @@ class MovieFactory extends Factory
         return [
             'title' => fake()->sentence,
             'description' => fake()->text($maxNbChars = 1000),
+            'image_url' => fake()->imageUrl($width = 640, $height = 480),
+            'genre_id' => function () {
+                return Genre::all()->random()->id;
+            },
             'user_id' => function () {
                 return User::all()->random()->id;
             }

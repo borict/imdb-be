@@ -11,7 +11,6 @@ return new class extends Migration
         Schema::create('genres', function (Blueprint $table) {
             $table->id();
             $table->string('genres');
-            $table->foreignId('movies_id')->constrained()->cascadeOnDelete();
         });
     }
 

@@ -12,6 +12,8 @@ class Movie extends Model
     protected $fillable = [
         'title',
         'description',
+        'image_url',
+        'genres_id',
         'user_id',
     ];
 
@@ -20,18 +22,12 @@ class Movie extends Model
         return true;
     }
 
+    public function genre()
+    {
+        return $this->belongsTo(Genre::class);
+    }
     public function user()
     {
         return $this->belongsTo(User::class);
-    }
-
-    public function images()
-    {
-        return $this->hasMany(Image::class);
-    }
-
-    public function genres()
-    {
-        return $this->hasMany(Genre::class);
     }
 }
